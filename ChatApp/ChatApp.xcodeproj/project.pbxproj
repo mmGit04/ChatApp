@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -118,7 +118,6 @@
 				FA6250D59489CF5D3BB987EF /* Pods-ChatApp.debug.xcconfig */,
 				99637D4F93430C8B22F5C265 /* Pods-ChatApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -134,6 +133,7 @@
 				60F58C7B2549E1E100EAD152 /* Frameworks */,
 				60F58C7C2549E1E100EAD152 /* Resources */,
 				D48081206C829E3A521ED241 /* [CP] Embed Pods Frameworks */,
+				F07B91E3BD055A3758E7B1EB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -207,6 +207,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ChatApp/Pods-ChatApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F07B91E3BD055A3758E7B1EB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ChatApp/Pods-ChatApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ChatApp/Pods-ChatApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ChatApp/Pods-ChatApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F414C0A4CAAE22ACA6E11C8E /* [CP] Check Pods Manifest.lock */ = {

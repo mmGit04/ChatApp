@@ -8,4 +8,6 @@ target 'ChatApp' do
   # Pods for ChatApp
 pod 'Firebase/Auth'
 pod 'GoogleSignIn'
+pod 'FBSDKLoginKit'
+   
 end

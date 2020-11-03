@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60984F672551DAEC00AE3731 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60984F662551DAEC00AE3731 /* RoundedButton.swift */; };
 		60F58C822549E1E100EAD152 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F58C812549E1E100EAD152 /* AppDelegate.swift */; };
 		60F58C842549E1E100EAD152 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F58C832549E1E100EAD152 /* SceneDelegate.swift */; };
 		60F58C862549E1E100EAD152 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F58C852549E1E100EAD152 /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		60984F662551DAEC00AE3731 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		60F58C7E2549E1E100EAD152 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60F58C812549E1E100EAD152 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60F58C832549E1E100EAD152 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				60F58C9F254A11FD00EAD152 /* ToastExtension.swift */,
+				60984F662551DAEC00AE3731 /* RoundedButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				60F58C9E2549FB3F00EAD152 /* RegisterViewController.swift in Sources */,
 				60F58C8C2549E1E100EAD152 /* ChatApp.xcdatamodeld in Sources */,
 				60F58C822549E1E100EAD152 /* AppDelegate.swift in Sources */,
+				60984F672551DAEC00AE3731 /* RoundedButton.swift in Sources */,
 				60F58CA0254A11FD00EAD152 /* ToastExtension.swift in Sources */,
 				60F58C842549E1E100EAD152 /* SceneDelegate.swift in Sources */,
 			);

@@ -17,33 +17,39 @@ class ViewController: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     
-    @IBOutlet weak var googleSignIn: GIDSignInButton!
+    // @IBOutlet weak var googleSignIn: GIDSignInButton!
+    let facebookLoginButton = FBLoginButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance().signIn()
-        addFBbutton()
+        facebookLoginButton.delegate = self
         
     }
     
+    
     private func addFBbutton() {
-        
-        let loginButton = FBLoginButton()
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(loginButton)
-        NSLayoutConstraint.activate([
-            loginButton.leadingAnchor.constraint(equalTo: googleSignIn.trailingAnchor, constant: 30),
-            loginButton.centerYAnchor.constraint(equalTo: googleSignIn.centerYAnchor),
-            loginButton.widthAnchor.constraint(equalToConstant: 150),
-            loginButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
-        loginButton.delegate = self
+        //        let loginButton = FBLoginButton()
+        //        loginButton.translatesAutoresizingMaskIntoConstraints = false
+        //        view.addSubview(loginButton)
+        //        NSLayoutConstraint.activate([
+        //            loginButton.leadingAnchor.constraint(equalTo: googleSignIn.trailingAnchor, constant: 30),
+        //            loginButton.centerYAnchor.constraint(equalTo: googleSignIn.centerYAnchor),
+        //            loginButton.widthAnchor.constraint(equalToConstant: 150),
+        //            loginButton.heightAnchor.constraint(equalToConstant: 50)
+        //        ])
+        //        loginButton.delegate = self
     }
     
     
     //Facebook sign in
+    
+    @IBAction func registerWithFacebook(_ sender: UIButton) {
+        facebookLoginButton.sendActions(for: .touchUpInside)
+    }
+    
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         print("Logout")
     }
@@ -73,10 +79,16 @@ class ViewController: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
         }
         
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-         
+            print(error)
             
         }
     }
+    
+    @IBAction func googleSignIn(sender: UIButton) {
+        GIDSignIn.sharedInstance().signIn()
+        
+    }
+    
     
     // Google Sign in
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {

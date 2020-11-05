@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import JGProgressHUD
 
 class RegisterViewController: UIViewController, UITextFieldDelegate {
     
@@ -26,6 +27,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         return formatter
     }()
     
+    private let spinner = JGProgressHUD(style: .dark)
     var emailAlreadyInUse: Bool = true
     var vSpinner : UIView?
     
@@ -53,14 +55,26 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
+        fullNameTextField.resignFirstResponder()
+        birthdayTextField.resignFirstResponder()
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        repeatPassTextField.resignFirstResponder()
+        
         let (valid, message) = validateLoginForm()
         if !valid {
             showToast(message: message!, font: .systemFont(ofSize: 18.0))
             return
         }
-        showSpinner(onView: view)
+    
+        spinner.show(in: view)
+
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { authResult, error in
-            self.removeSpinner()
+            
+            DispatchQueue.main.async {
+                self.spinner.dismiss()
+            }
+            
             if let x = error {
                 let err = x as NSError
                 switch err.code {
@@ -71,13 +85,15 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 }
                 
             } else {
+                UserDefaults.standard.setValue(self.emailTextField.text!, forKey: "email")
+                UserDefaults.standard.setValue(self.fullNameTextField.text!, forKey: "fullName")
+                let user = User(fullName: self.fullNameTextField.text!, email: self.emailTextField.text!)
+                DatabaseManager.instance.addUser(user: user)
                 self.performSegue(withIdentifier: "RegisterToMainSegue", sender: nil)
             }
-            
-            
         }
-        
     }
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
@@ -129,7 +145,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         return validate(repeatPassTextField)
     }
 }
-
 extension UIDatePicker {
     func setDatePickerValidation(min: Int, max: Int) {
         let currentDate: Date = Date()
@@ -146,26 +161,5 @@ extension UIDatePicker {
     } }
 
 
-extension RegisterViewController {
-    func showSpinner(onView : UIView) {
-        let spinnerView = UIView.init(frame: onView.bounds)
-        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-        let ai = UIActivityIndicatorView.init(style: UIActivityIndicatorView.Style.large)
-        ai.startAnimating()
-        ai.center = spinnerView.center
-        
-        DispatchQueue.main.async {
-            spinnerView.addSubview(ai)
-            onView.addSubview(spinnerView)
-        }
-        
-        vSpinner = spinnerView
-    }
-    
-    func removeSpinner() {
-        DispatchQueue.main.async {
-            self.vSpinner?.removeFromSuperview()
-            self.vSpinner = nil
-        }
-    }
-}
+
+

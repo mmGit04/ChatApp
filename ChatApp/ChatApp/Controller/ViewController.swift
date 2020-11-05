@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import FBSDKLoginKit
+import JGProgressHUD
+import FirebaseFirestore
 
 class ViewController: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
     
@@ -19,33 +21,20 @@ class ViewController: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
     
     // @IBOutlet weak var googleSignIn: GIDSignInButton!
     let facebookLoginButton = FBLoginButton()
+    private let spinner = JGProgressHUD(style: .dark)
+    
     
     override func viewDidLoad() {
+        
+        
         super.viewDidLoad()
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance().signIn()
         facebookLoginButton.delegate = self
-        
     }
-    
-    
-    private func addFBbutton() {
-        //        let loginButton = FBLoginButton()
-        //        loginButton.translatesAutoresizingMaskIntoConstraints = false
-        //        view.addSubview(loginButton)
-        //        NSLayoutConstraint.activate([
-        //            loginButton.leadingAnchor.constraint(equalTo: googleSignIn.trailingAnchor, constant: 30),
-        //            loginButton.centerYAnchor.constraint(equalTo: googleSignIn.centerYAnchor),
-        //            loginButton.widthAnchor.constraint(equalToConstant: 150),
-        //            loginButton.heightAnchor.constraint(equalToConstant: 50)
-        //        ])
-        //        loginButton.delegate = self
-    }
-    
     
     //Facebook sign in
-    
     @IBAction func registerWithFacebook(_ sender: UIButton) {
         facebookLoginButton.sendActions(for: .touchUpInside)
     }
@@ -64,6 +53,7 @@ class ViewController: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
             if error != nil {
                 print("Error")
             }
+            // Retrieve User Data
             
             
         }
@@ -71,17 +61,39 @@ class ViewController: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
     
     // Sign in with email and password
     @IBAction func signInButtonPressed(_ sender: Any) {
-        guard let email = emailTextField.text else {
-            return
-        }
-        guard let password = passwordTextField.text else {
+        // Close the keyboards
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        
+        guard let email = emailTextField.text, let password = passwordTextField.text, !email.isEmpty, !password.isEmpty else {
+            alertUserLoginError(message: "Please enter all information to log in.")
             return
         }
         
+        spinner.show(in: view)
+        
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-            print(error)
+            guard let strongSelf = self else { return }
             
+            DispatchQueue.main.async {
+                strongSelf.spinner.dismiss()
+            }
+            guard error == nil else {
+                strongSelf.alertUserLoginError(message: "Failed to log in user with email: \(email)")
+                return
+            }
+            // Retrieve data from this specific User and store in User Defaults
+            DatabaseManager.instance.getUserData(forEmail: email) {(user, success) in
+                if success {
+                    UserDefaults.standard.setValue(user!.email, forKey: "email")
+                    UserDefaults.standard.setValue(user!.fullName, forKey: "fullName")
+                    print("Logged in a user: \(user!)")
+                    strongSelf.performSegue(withIdentifier: "LoginToMainSegue", sender: strongSelf)
+                }
+            }
+           
         }
+        
     }
     
     @IBAction func googleSignIn(sender: UIButton) {
@@ -116,5 +128,16 @@ class ViewController: UIViewController, GIDSignInDelegate, LoginButtonDelegate {
             }
         }
         
+    }
+    
+    // MARK: Helpers
+    
+    func alertUserLoginError(message: String) {
+        let alert = UIAlertController(title: "Woops",
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title:"Dismiss",
+                                      style: .cancel, handler: nil))
+        present(alert, animated: true)
     }
 }

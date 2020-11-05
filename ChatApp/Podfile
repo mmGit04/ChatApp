@@ -9,5 +9,9 @@ target 'ChatApp' do
 pod 'Firebase/Auth'
 pod 'GoogleSignIn'
 pod 'FBSDKLoginKit'
+pod 'JGProgressHUD'
+pod 'Firebase/Firestore'
+pod 'Firebase/Core' 
+
    
 end

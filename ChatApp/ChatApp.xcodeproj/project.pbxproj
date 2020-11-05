@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		604DBC2B2553030200BAD154 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604DBC2A2553030200BAD154 /* DatabaseManager.swift */; };
+		604DBC2D2553074E00BAD154 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604DBC2C2553074E00BAD154 /* User.swift */; };
+		604DBC31255484A600BAD154 /* RoundedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604DBC30255484A600BAD154 /* RoundedImage.swift */; };
+		604DBC33255493DC00BAD154 /* ProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604DBC32255493DC00BAD154 /* ProfileViewCell.swift */; };
 		60984F672551DAEC00AE3731 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60984F662551DAEC00AE3731 /* RoundedButton.swift */; };
+		60984F692551EB1200AE3731 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60984F682551EB1200AE3731 /* ProfileViewController.swift */; };
 		60F58C822549E1E100EAD152 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F58C812549E1E100EAD152 /* AppDelegate.swift */; };
 		60F58C842549E1E100EAD152 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F58C832549E1E100EAD152 /* SceneDelegate.swift */; };
 		60F58C862549E1E100EAD152 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F58C852549E1E100EAD152 /* ViewController.swift */; };
@@ -22,7 +27,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		604DBC2A2553030200BAD154 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		604DBC2C2553074E00BAD154 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		604DBC30255484A600BAD154 /* RoundedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImage.swift; sourceTree = "<group>"; };
+		604DBC32255493DC00BAD154 /* ProfileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewCell.swift; sourceTree = "<group>"; };
 		60984F662551DAEC00AE3731 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		60984F682551EB1200AE3731 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		60F58C7E2549E1E100EAD152 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60F58C812549E1E100EAD152 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60F58C832549E1E100EAD152 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +101,8 @@
 		60F58C982549E1F900EAD152 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				604DBC2A2553030200BAD154 /* DatabaseManager.swift */,
+				604DBC2C2553074E00BAD154 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -100,6 +112,8 @@
 			children = (
 				60F58C9F254A11FD00EAD152 /* ToastExtension.swift */,
 				60984F662551DAEC00AE3731 /* RoundedButton.swift */,
+				604DBC30255484A600BAD154 /* RoundedImage.swift */,
+				604DBC32255493DC00BAD154 /* ProfileViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -109,6 +123,7 @@
 			children = (
 				60F58C852549E1E100EAD152 /* ViewController.swift */,
 				60F58C9D2549FB3F00EAD152 /* RegisterViewController.swift */,
+				60984F682551EB1200AE3731 /* ProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -264,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				604DBC33255493DC00BAD154 /* ProfileViewCell.swift in Sources */,
 				60F58C862549E1E100EAD152 /* ViewController.swift in Sources */,
 				60F58C9E2549FB3F00EAD152 /* RegisterViewController.swift in Sources */,
 				60F58C8C2549E1E100EAD152 /* ChatApp.xcdatamodeld in Sources */,
@@ -271,6 +287,10 @@
 				60984F672551DAEC00AE3731 /* RoundedButton.swift in Sources */,
 				60F58CA0254A11FD00EAD152 /* ToastExtension.swift in Sources */,
 				60F58C842549E1E100EAD152 /* SceneDelegate.swift in Sources */,
+				60984F692551EB1200AE3731 /* ProfileViewController.swift in Sources */,
+				604DBC2D2553074E00BAD154 /* User.swift in Sources */,
+				604DBC31255484A600BAD154 /* RoundedImage.swift in Sources */,
+				604DBC2B2553030200BAD154 /* DatabaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

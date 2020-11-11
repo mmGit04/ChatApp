@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(db)
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-        print(NSHomeDirectory())
+        
         return true
     }
 

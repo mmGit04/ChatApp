@@ -10,7 +10,7 @@
         <!--ChatRoom-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="ChatApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -172,7 +172,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1012" y="148"/>
+            <point key="canvasLocation" x="1933" y="148"/>
         </scene>
         <!--Register user-->
         <scene sceneID="Bh4-YB-xAZ">
@@ -183,7 +183,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="1uw-zu-WHp">
-                                <rect key="frame" x="82" y="138" width="250" height="280.5"/>
+                                <rect key="frame" x="82" y="138" width="250" height="220"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="XI8-ok-Fx7">
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="33.5"/>
@@ -212,37 +212,12 @@
                                             </view>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="UYy-4G-DBZ">
-                                        <rect key="frame" x="0.0" y="62.5" width="250" height="33.5"/>
-                                        <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="birthday" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zSD-Ws-hEa">
-                                                <rect key="frame" x="0.0" y="0.0" width="250" height="26.5"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
-                                                        <color key="value" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <outlet property="delegate" destination="zt6-Vs-bRy" id="Fa8-Bs-kRz"/>
-                                                </connections>
-                                            </textField>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EUk-Bj-4Gv">
-                                                <rect key="frame" x="0.0" y="31.5" width="250" height="2"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="250" id="RWC-qa-Bnw"/>
-                                                    <constraint firstAttribute="height" constant="2" id="ccE-7t-k9b"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
-                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="UVA-Cp-tWZ">
-                                        <rect key="frame" x="0.0" y="125" width="250" height="33.5"/>
+                                        <rect key="frame" x="0.0" y="62.5" width="250" height="33.5"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hoG-X7-j8H">
                                                 <rect key="frame" x="0.0" y="0.0" width="250" height="26.5"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                                 <userDefinedRuntimeAttributes>
@@ -264,11 +239,12 @@
                                             </view>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="VqE-5K-LKy">
-                                        <rect key="frame" x="0.0" y="187.5" width="250" height="32"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="VqE-5K-LKy">
+                                        <rect key="frame" x="0.0" y="125" width="250" height="33"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kvH-p3-LP8">
                                                 <rect key="frame" x="0.0" y="0.0" width="250" height="25"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
@@ -281,7 +257,7 @@
                                                 </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xoh-Fj-g6P">
-                                                <rect key="frame" x="0.0" y="30" width="250" height="2"/>
+                                                <rect key="frame" x="0.0" y="31" width="250" height="2"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="4da-oe-Ola"/>
@@ -290,11 +266,12 @@
                                             </view>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="bD9-eN-f6L">
-                                        <rect key="frame" x="0.0" y="248.5" width="250" height="32"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="bD9-eN-f6L">
+                                        <rect key="frame" x="0.0" y="187" width="250" height="33"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="repeat password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wl5-Ez-fn9">
                                                 <rect key="frame" x="0.0" y="0.0" width="250" height="25"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
@@ -307,7 +284,7 @@
                                                 </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sla-Sz-Ygl">
-                                                <rect key="frame" x="0.0" y="30" width="250" height="2"/>
+                                                <rect key="frame" x="0.0" y="31" width="250" height="2"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="18y-26-O4I"/>
@@ -322,7 +299,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2da-MK-XGu">
-                                <rect key="frame" x="82" y="448.5" width="250" height="47"/>
+                                <rect key="frame" x="82" y="388" width="250" height="47"/>
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.43137254899999999" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="oT5-vg-CdD"/>
@@ -358,7 +335,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Register user" id="qUa-VY-IeV"/>
                     <connections>
-                        <outlet property="birthdayTextField" destination="zSD-Ws-hEa" id="n5l-50-9Ys"/>
                         <outlet property="emailTextField" destination="hoG-X7-j8H" id="uqu-hz-uge"/>
                         <outlet property="fullNameTextField" destination="8Xw-GE-jKN" id="eoq-q8-cyh"/>
                         <outlet property="passwordTextField" destination="kvH-p3-LP8" id="nTo-vG-lwA"/>
@@ -368,12 +344,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sgJ-Wf-9XS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1810" y="148"/>
+            <point key="canvasLocation" x="3119" y="148"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="erD-iw-cC3">
             <objects>
-                <tabBarController id="1bZ-jH-R9l" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainViewController" id="1bZ-jH-R9l" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="W1d-rr-4EO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -429,6 +405,9 @@
                                         <state key="normal" title="Logout ">
                                             <color key="titleColor" red="0.95294117649999999" green="0.43137254899999999" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="logoutButtonPressed:" destination="GQi-sQ-00m" eventType="touchUpInside" id="ZXc-cH-MUG"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.35686274509999999" green="0.27058823529999998" blue="0.55294117649999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -494,11 +473,12 @@
                     <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="Tn9-P3-cXd"/>
                     <connections>
                         <outlet property="dataTableView" destination="cny-iX-Faf" id="2Ey-oK-ImI"/>
+                        <segue destination="hmL-wP-7cO" kind="presentation" identifier="returnToLoginSegue" modalPresentationStyle="fullScreen" id="0ff-NX-tLL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G67-am-TXc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2292.753623188406" y="1756.4732142857142"/>
+            <point key="canvasLocation" x="3216" y="994"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BI8-ZE-aGi">
@@ -516,7 +496,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cAc-Mu-4lw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="216" y="148"/>
+            <point key="canvasLocation" x="1007" y="148"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FBSDKLoginKit
 
 class ProfileViewController: UIViewController, UITableViewDataSource {
     
+    // Variables
     private var data = [String:String]()
-
+    var handle: AuthStateDidChangeListenerHandle?
+    
     // Outlets
     @IBOutlet weak var dataTableView: UITableView!
     
@@ -23,15 +27,29 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
     }
     
     private func loadData() {
-        let fullName = UserDefaults.standard.string(forKey: "fullName")
-        let email = UserDefaults.standard.string(forKey: "email")
-        data["fullName"] = fullName
-        data["email"] = email
+        let user = Auth.auth().currentUser
+        if let user = user {
+            let fullName = user.displayName ?? ""
+            let email = user.email
+            data["fullName"] = fullName
+            data["email"] = email
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            if Auth.auth().currentUser == nil {
+                self.performSegue(withIdentifier: "returnToLoginSegue", sender: nil)
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(handle!)
     }
     
     
     // MARK: Table View Data Source methods
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
@@ -43,12 +61,22 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
             cell.setupCell(title: "User name", detail: data["fullName"]!)
         case 1:
             cell.setupCell(title: "Email", detail: data["email"]!)
-            default:
+        default:
             break
         }
         return cell
     }
-
-
-
+    
+    @IBAction func logoutButtonPressed(_ sender: UIButton) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            UserDefaults.standard.set(false, forKey: "isLogin")
+            AccessToken.current=nil
+            
+            print("Succesfully logout.")
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
 }

@@ -15,7 +15,7 @@
 		60984F692551EB1200AE3731 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60984F682551EB1200AE3731 /* ProfileViewController.swift */; };
 		60F58C822549E1E100EAD152 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F58C812549E1E100EAD152 /* AppDelegate.swift */; };
 		60F58C842549E1E100EAD152 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F58C832549E1E100EAD152 /* SceneDelegate.swift */; };
-		60F58C862549E1E100EAD152 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F58C852549E1E100EAD152 /* ViewController.swift */; };
+		60F58C862549E1E100EAD152 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F58C852549E1E100EAD152 /* LoginViewController.swift */; };
 		60F58C892549E1E100EAD152 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60F58C872549E1E100EAD152 /* Main.storyboard */; };
 		60F58C8C2549E1E100EAD152 /* ChatApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 60F58C8A2549E1E100EAD152 /* ChatApp.xcdatamodeld */; };
 		60F58C8E2549E1E300EAD152 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60F58C8D2549E1E300EAD152 /* Assets.xcassets */; };
@@ -36,7 +36,7 @@
 		60F58C7E2549E1E100EAD152 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60F58C812549E1E100EAD152 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60F58C832549E1E100EAD152 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		60F58C852549E1E100EAD152 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		60F58C852549E1E100EAD152 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		60F58C882549E1E100EAD152 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		60F58C8B2549E1E100EAD152 /* ChatApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ChatApp.xcdatamodel; sourceTree = "<group>"; };
 		60F58C8D2549E1E300EAD152 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 		60F58C9A2549E20200EAD152 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				60F58C852549E1E100EAD152 /* ViewController.swift */,
+				60F58C852549E1E100EAD152 /* LoginViewController.swift */,
 				60F58C9D2549FB3F00EAD152 /* RegisterViewController.swift */,
 				60984F682551EB1200AE3731 /* ProfileViewController.swift */,
 			);
@@ -280,7 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				604DBC33255493DC00BAD154 /* ProfileViewCell.swift in Sources */,
-				60F58C862549E1E100EAD152 /* ViewController.swift in Sources */,
+				60F58C862549E1E100EAD152 /* LoginViewController.swift in Sources */,
 				60F58C9E2549FB3F00EAD152 /* RegisterViewController.swift in Sources */,
 				60F58C8C2549E1E100EAD152 /* ChatApp.xcdatamodeld in Sources */,
 				60F58C822549E1E100EAD152 /* AppDelegate.swift in Sources */,

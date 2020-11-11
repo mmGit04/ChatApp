@@ -19,47 +19,62 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     
-    // @IBOutlet weak var googleSignIn: GIDSignInButton!
+    // Variables
     let facebookLoginButton = FBLoginButton()
     private let spinner = JGProgressHUD(style: .dark)
-    
+    var handle: AuthStateDidChangeListenerHandle?
     
     override func viewDidLoad() {
-        
-        
         super.viewDidLoad()
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance()?.presentingViewController = self
-        GIDSignIn.sharedInstance().signIn()
         facebookLoginButton.delegate = self
     }
     
-    //Facebook sign in
+    override func viewWillAppear(_ animated: Bool) {
+        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+            if let _ = Auth.auth().currentUser {
+                UserDefaults.standard.set(true, forKey: "isLogin")
+                self.performSegue(withIdentifier: "LoginToMainSegue", sender: nil)
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(handle!)
+    }
+    
+    // MARK: Facebook sign in
     @IBAction func registerWithFacebook(_ sender: UIButton) {
         facebookLoginButton.sendActions(for: .touchUpInside)
     }
     
-    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
-        print("Logout")
-    }
-    
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-        if let error = error {
-            print(error.localizedDescription)
+        guard error == nil else {
+            self.alertUserLoginError(message: "Failed to log in user with facebook.")
             return
         }
+        if let canceled = result?.isCancelled, canceled {
+            return
+        }
+        
         let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
         Auth.auth().signIn(with: credential) { (authResult, error) in
-            if error != nil {
-                print("Error")
+            guard error == nil else {
+                self.alertUserLoginError(message: "Failed to log in user with facebook.")
+                print("Error while signing in facebook user.")
+                return
             }
-            // Retrieve User Data
-            
-            
+            // Succesfully logged in
+            print("Logged in with facebooka account.")
         }
     }
     
-    // Sign in with email and password
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        print("FB logout")
+    }
+    
+    // MARK: Sign in with email and password
     @IBAction func signInButtonPressed(_ sender: Any) {
         // Close the keyboards
         emailTextField.resignFirstResponder()
@@ -69,9 +84,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
             alertUserLoginError(message: "Please enter all information to log in.")
             return
         }
-        
         spinner.show(in: view)
-        
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
             guard let strongSelf = self else { return }
             
@@ -82,32 +95,21 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
                 strongSelf.alertUserLoginError(message: "Failed to log in user with email: \(email)")
                 return
             }
-            // Retrieve data from this specific User and store in User Defaults
-            DatabaseManager.instance.getUserData(forEmail: email) {(user, success) in
-                if success {
-                    UserDefaults.standard.set(user!.email, forKey: "email")
-                    UserDefaults.standard.set(user!.fullName, forKey: "fullName")
-                    UserDefaults.standard.set(true, forKey: "isLogin")
-                    print("Logged in a user: \(user!)")
-                    strongSelf.performSegue(withIdentifier: "LoginToMainSegue", sender: strongSelf)
-                }
-            }
-           
+            // Succesfully logged in
+            print("Logged in a user with email : \(email)")
         }
         
     }
     
+    // MARK: Sign In with google
     @IBAction func googleSignIn(sender: UIButton) {
         GIDSignIn.sharedInstance().signIn()
-        
     }
-    
     
     // Google Sign in
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-        // ...
-        if error != nil {
-            // ...
+        
+        guard error == nil else {
             return
         }
         
@@ -115,30 +117,14 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
         Auth.auth().signIn(with: credential) { (authResult, error) in
-            if error != nil {
-                print("Error")
+            guard error == nil else {
+                self.alertUserLoginError(message: "Failed to log in user with google.")
+                print("Error while signing in google user.")
+                return
             }
+            // Succesfully logged in
+            print("Logged in with google account.")
         }
-        
-        func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-            let firebaseAuth = Auth.auth()
-            do {
-                try firebaseAuth.signOut()
-            } catch let signOutError as NSError {
-                print ("Error signing out: %@", signOutError)
-            }
-        }
-        
     }
     
-    // MARK: Helpers
-    
-    func alertUserLoginError(message: String) {
-        let alert = UIAlertController(title: "Woops",
-                                      message: message,
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title:"Dismiss",
-                                      style: .cancel, handler: nil))
-        present(alert, animated: true)
-    }
 }

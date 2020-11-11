@@ -28,4 +28,6 @@ class ProfileViewCell: UITableViewCell {
         titleLabel.text = title
         detailLabel.text = detail
     }
+    
+    
 }

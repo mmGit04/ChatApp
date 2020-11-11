@@ -1,0 +1,17 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '13.4'
+
+target 'ChatApp' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for ChatApp
+pod 'Firebase/Auth'
+pod 'GoogleSignIn'
+pod 'FBSDKLoginKit'
+pod 'JGProgressHUD'
+pod 'Firebase/Firestore'
+pod 'Firebase/Core' 
+
+   
+end

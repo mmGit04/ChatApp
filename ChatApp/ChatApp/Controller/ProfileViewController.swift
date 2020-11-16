@@ -9,12 +9,15 @@
 import UIKit
 import FirebaseAuth
 import FBSDKLoginKit
+import FirebaseFirestore
 
 class ProfileViewController: UIViewController, UITableViewDataSource {
     
     // Variables
     private var data = [String:String]()
     var handle: AuthStateDidChangeListenerHandle?
+    let db = Firestore.firestore()
+    var listener: ListenerRegistration?
     
     // Outlets
     @IBOutlet weak var dataTableView: UITableView!
@@ -27,13 +30,16 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
     }
     
     private func loadData() {
-        let user = Auth.auth().currentUser
-        if let user = user {
-            let fullName = user.displayName ?? ""
-            let email = user.email
-            data["fullName"] = fullName
-            data["email"] = email
+        guard let user = DatabaseManager.instance.currentLoggedInUser else {
+            print("User is not currently logged in.")
+            return
         }
+        
+        let fullName = user.fullName ?? ""
+        let email = user.email ?? ""
+        data["fullName"] = fullName
+        data["email"] = email
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,10 +48,30 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
                 self.performSegue(withIdentifier: "returnToLoginSegue", sender: nil)
             }
         }
+        listenDocument()
+    }
+    
+    private func listenDocument() {
+        // [START listen_document]
+        listener = db.collection("userData").document(Auth.auth().currentUser?.uid ?? "")
+            .addSnapshotListener { documentSnapshot, error in
+                guard let document = documentSnapshot else {
+                    print("Error fetching document: \(error!)")
+                    return
+                }
+                guard let data = document.data() else {
+                    print("Document data was empty.")
+                    return
+                }
+                self.loadData()
+                self.dataTableView.reloadData()
+                print("Current data: \(data)")
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         Auth.auth().removeStateDidChangeListener(handle!)
+        listener?.remove()
     }
     
     

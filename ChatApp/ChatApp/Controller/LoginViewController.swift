@@ -33,8 +33,9 @@ class LoginViewController: UIViewController, GIDSignInDelegate, LoginButtonDeleg
     
     override func viewWillAppear(_ animated: Bool) {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            if let _ = Auth.auth().currentUser {
+            if let user = Auth.auth().currentUser {
                 UserDefaults.standard.set(true, forKey: "isLogin")
+                DatabaseManager.instance.addUser(uId: user.uid, userFullName: user.displayName, email: user.email)
                 self.performSegue(withIdentifier: "LoginToMainSegue", sender: nil)
             }
         }

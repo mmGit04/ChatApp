@@ -23,6 +23,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     var emailAlreadyInUse: Bool = true
     var vSpinner : UIView?
     var handle: AuthStateDidChangeListenerHandle?
+    var currentUserName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,17 +31,23 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            if Auth.auth().currentUser != nil {
+            if let user = Auth.auth().currentUser {
+                DatabaseManager.instance.addUser(uId: user.uid, userFullName: self.currentUserName!, email: user.email)
                 self.performSegue(withIdentifier: "RegisterToMainSegue", sender: nil)
             }
         }
     }
     
-    private func updateUserInfo(displayName: String) {
+    private func updateUserInfo(displayName name: String) {
         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-        changeRequest?.displayName = displayName
+        changeRequest?.displayName = name
         changeRequest?.commitChanges { (error) in
-            print("Error saving user name to Firebase user object.")
+            if error != nil {
+                 print("Error saving user name to Firebase user object.")
+            } else {
+                print("Succesfully commited user changes.")
+            }
+           
         }
     }
     
@@ -85,7 +92,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             // User is registered succesfully
             UserDefaults.standard.set(true, forKey: "isLogin")
             print("User is registered succesfully")
-            self.updateUserInfo(displayName: self.fullNameTextField.text!)
+            self.updateUserInfo(displayName: self.currentUserName!)
         }
     }
     
@@ -110,6 +117,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         }
         switch textField {
         case fullNameTextField:
+            currentUserName = text
             return (!text.isEmpty, "Name cannot be empty.")
         case emailTextField:
             return (!text.isEmpty, "Email cannot be empty.")

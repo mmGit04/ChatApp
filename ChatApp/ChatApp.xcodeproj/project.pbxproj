@@ -13,6 +13,9 @@
 		604DBC33255493DC00BAD154 /* ProfileViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604DBC32255493DC00BAD154 /* ProfileViewCell.swift */; };
 		60984F672551DAEC00AE3731 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60984F662551DAEC00AE3731 /* RoundedButton.swift */; };
 		60984F692551EB1200AE3731 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60984F682551EB1200AE3731 /* ProfileViewController.swift */; };
+		60C44793255BED8D0003DC0B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C44792255BED8D0003DC0B /* ChatViewController.swift */; };
+		60C44795255BEDE10003DC0B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C44794255BEDE10003DC0B /* SearchViewController.swift */; };
+		60C44797255BF6F40003DC0B /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C44796255BF6F40003DC0B /* SearchTableViewCell.swift */; };
 		60F58C822549E1E100EAD152 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F58C812549E1E100EAD152 /* AppDelegate.swift */; };
 		60F58C842549E1E100EAD152 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F58C832549E1E100EAD152 /* SceneDelegate.swift */; };
 		60F58C862549E1E100EAD152 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F58C852549E1E100EAD152 /* LoginViewController.swift */; };
@@ -33,6 +36,9 @@
 		604DBC32255493DC00BAD154 /* ProfileViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewCell.swift; sourceTree = "<group>"; };
 		60984F662551DAEC00AE3731 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		60984F682551EB1200AE3731 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		60C44792255BED8D0003DC0B /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		60C44794255BEDE10003DC0B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		60C44796255BF6F40003DC0B /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		60F58C7E2549E1E100EAD152 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60F58C812549E1E100EAD152 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60F58C832549E1E100EAD152 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +120,7 @@
 				60984F662551DAEC00AE3731 /* RoundedButton.swift */,
 				604DBC30255484A600BAD154 /* RoundedImage.swift */,
 				604DBC32255493DC00BAD154 /* ProfileViewCell.swift */,
+				60C44796255BF6F40003DC0B /* SearchTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -124,6 +131,8 @@
 				60F58C852549E1E100EAD152 /* LoginViewController.swift */,
 				60F58C9D2549FB3F00EAD152 /* RegisterViewController.swift */,
 				60984F682551EB1200AE3731 /* ProfileViewController.swift */,
+				60C44792255BED8D0003DC0B /* ChatViewController.swift */,
+				60C44794255BEDE10003DC0B /* SearchViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -287,7 +296,10 @@
 				60984F672551DAEC00AE3731 /* RoundedButton.swift in Sources */,
 				60F58CA0254A11FD00EAD152 /* ToastExtension.swift in Sources */,
 				60F58C842549E1E100EAD152 /* SceneDelegate.swift in Sources */,
+				60C44795255BEDE10003DC0B /* SearchViewController.swift in Sources */,
+				60C44797255BF6F40003DC0B /* SearchTableViewCell.swift in Sources */,
 				60984F692551EB1200AE3731 /* ProfileViewController.swift in Sources */,
+				60C44793255BED8D0003DC0B /* ChatViewController.swift in Sources */,
 				604DBC2D2553074E00BAD154 /* User.swift in Sources */,
 				604DBC31255484A600BAD154 /* RoundedImage.swift in Sources */,
 				604DBC2B2553030200BAD154 /* DatabaseManager.swift in Sources */,

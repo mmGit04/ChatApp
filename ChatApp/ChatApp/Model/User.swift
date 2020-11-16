@@ -9,24 +9,16 @@
 import Foundation
 
 
-struct User{
-    var fullName:String
-    var email: String
+struct UserData{
+    let id: String
+    var fullName:String?
+    var email: String?
     
-    var dictionary: [String: Any] {
-        return [
-            "fullName": fullName,
-            
-        ]
+    public mutating func setupData(dict: [String: Any]) {
+        fullName = dict["fullName"] as? String
+        email = dict["email"] as? String
     }
+
 }
 
-extension User{
-    init?(dictionary: [String : Any]) {
-        guard  let name = dictionary["fullName"] as? String,
-        let email = dictionary["email"] as? String
-            else { return nil }
-        
-        self.init(fullName: name, email: email)
-    }
-}
+
